@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import "./KeyWordFinder.css";
+import "./KeywordFinder.css";
 import Modal from "./Modal/Modal";
 const KeyWordFinder = () => {
   const [Text, setText] = useState("");
