@@ -3,7 +3,7 @@
 <img width="1439" alt="Screenshot 2023-05-30 at 7 41 07 PM" src="https://github.com/thafsi-pv/Keyword-finder/assets/22377348/35b29322-2801-4d8c-b667-0c3d94ac83cf">
 
 
-[Demo](https://keyword-finder-taupe.vercel.app)
+[Demo](https://keyword-finder-taupe.vercel.app){:target="_blank"}
 
 This is a React app that helps users find and highlight specific keywords within the content of a web page. 
 
