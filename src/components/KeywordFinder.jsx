@@ -17,11 +17,14 @@ const KeyWordFinder = () => {
     document.addEventListener("keydown", detectKeydown, true);
     const html = htmlRef.current.innerHTML;
     setText(html);
+    return () => {
+      document.removeEventListener("keydown", detectKeydown, true);
+    };
   }, []);
 
   let cntrl = false;
   const detectKeydown = (e) => {
-    if (e.ctrlKey && e.key === "f") {
+    if (e.key === "f" && (e.ctrlKey || e.metaKey)) {
       e.preventDefault();
       //   alert("cntrl+f pressed");
       setShowInput((prev) => !prev);
