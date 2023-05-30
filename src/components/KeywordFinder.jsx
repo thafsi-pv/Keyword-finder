@@ -33,7 +33,6 @@ const KeyWordFinder = () => {
 
   const handleInput = (e) => {
     setMatchIndex(-1);
-    debugger;
     var keyword = e.target.value;
     if (keyword == "") {
       htmlRef.current.innerHTML = Text;
@@ -91,7 +90,6 @@ const KeyWordFinder = () => {
   };
 
   const handleNextClick = () => {
-    debugger;
     const matches = htmlRef.current.querySelectorAll(".high_light");
     const count = matches.length;
     if (count === 0 || count === 1) {
