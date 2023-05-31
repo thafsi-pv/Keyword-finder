@@ -3,8 +3,7 @@
 <img width="1439" alt="Screenshot 2023-05-30 at 7 41 07 PM" src="https://github.com/thafsi-pv/Keyword-finder/assets/22377348/35b29322-2801-4d8c-b667-0c3d94ac83cf">
 
 
-[#Demo](https://keyword-finder-taupe.vercel.app)
-
+[- Demo](https://keyword-finder-taupe.vercel.app)
 - Watch the demo video:- (url: https://github.com/thafsi-pv/Keyword-finder/assets/22377348/b71dcf87-e085-4b59-ae67-f6bc9e8a63b5)
 
 
