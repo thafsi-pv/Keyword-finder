@@ -100,6 +100,7 @@ const KeyWordFinder = () => {
     matches[nextIndex].classList.add("high_light1");
     if (matchIndex != -1) matches[matchIndex].classList.remove("high_light1");
     setMatchIndex(nextIndex);
+    matches[nextIndex].scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   const handlePrevClick = () => {
@@ -113,6 +114,7 @@ const KeyWordFinder = () => {
     matches[prevIndex].classList.add("high_light1");
     matches[matchIndex].classList.remove("high_light1");
     setMatchIndex(prevIndex);
+    matches[nextIndex].scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   const handleCloseBtn = () => {
@@ -195,6 +197,39 @@ const KeyWordFinder = () => {
           although they do not have to be (components may also be written in
           pure JavaScript). JSX is similar to another extension syntax created
           by Facebook for PHP called XHP. An example of JSX code:
+        </div>
+        <div>
+          <h2>React Hooks</h2>
+          On February 16, 2019, React 16.8 was released to the public,
+          introducing React Hooks.[13] Hooks are functions that let developers
+          "hook into" React state and lifecycle features from function
+          components.[14] Notably, Hooks do not work inside classes — they let
+          developers use more features of React without classes.[15] React
+          provides several built-in Hooks such as useState, useContext
+          useReducer, useMemo and useEffect. Others are documented in the Hooks
+          API Reference. useState and useEffect, which are the most commonly
+          used, are for controlling state and side effects respectively.
+        </div>
+        <div>
+          <h3>Rules of hooks </h3>
+          There are two rules of Hooks which describe the characteristic code
+          patterns that Hooks rely on:
+          <ol>
+            <li>
+              "Only Call Hooks at the Top Level" — Don't call hooks from
+              inside loops, conditions, or nested statements so that the hooks
+              are called in the same order each render. "Only Call Hooks from
+              React Functions" —
+            </li>
+            <li>
+              Don't call hooks from plain JavaScript functions so that
+              stateful logic stays with the component.
+            </li>
+          </ol>
+          Although these rules can't be enforced at runtime, code analysis tools
+          such as linters can be configured to detect many mistakes during
+          development. The rules apply to both usage of Hooks and the
+          implementation of custom Hooks,[22] which may call other Hooks.
         </div>
       </div>
     </div>

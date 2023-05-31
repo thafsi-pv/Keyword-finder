@@ -12,6 +12,7 @@ This is a React app that helps users find and highlight specific keywords within
 - Users can search for a keyword using the keyboard shortcut `Ctrl+F`, which will open a pop-up window containing an input box to enter the search term.
 - Once a keyword is entered, all instances of the keyword within the page content will be highlighted with a light orange color and the total count of matches will be displayed in the pop-up window.
 - Users can navigate through the search results by clicking the "next" button in the pop-up window. Each new match will be highlighted with a darker orange color.
+- Scroll to the currently super highlighted keyword position automatically
 - When no more matches are available, the "next" button will be disabled. 
 - Users can close the pop-up window by clicking the "close" button.
 
