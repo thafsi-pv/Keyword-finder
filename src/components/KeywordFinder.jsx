@@ -3,10 +3,10 @@ import "./KeywordFinder.css";
 import Modal from "./Modal/Modal";
 const KeyWordFinder = () => {
   const [Text, setText] = useState("");
-  const [highlightedText, setHighlightedText] = useState("");
+  //const [highlightedText, setHighlightedText] = useState("");
   const [matchCount, setMatchCount] = useState(0);
   const [matchIndex, setMatchIndex] = useState(-1);
-  const [searchText, setSearchText] = useState("");
+  //const [searchText, setSearchText] = useState("");
   const [showInput, setShowInput] = useState(false);
 
   const htmlRef = useRef(null);
@@ -22,11 +22,9 @@ const KeyWordFinder = () => {
     };
   }, []);
 
-  let cntrl = false;
   const detectKeydown = (e) => {
     if (e.key === "f" && (e.ctrlKey || e.metaKey)) {
       e.preventDefault();
-      //   alert("cntrl+f pressed");
       setShowInput((prev) => !prev);
     }
   };
@@ -34,34 +32,40 @@ const KeyWordFinder = () => {
   const handleInput = (e) => {
     setMatchIndex(-1);
     var keyword = e.target.value;
-    if (keyword == "") {
+    keyword = keyword.replace(/[.<]/g, "");
+    if (keyword == "" || keyword == null) {
       htmlRef.current.innerHTML = Text;
       setMatchCount(0);
       setMatchIndex(-1);
+      nextButtonRef.current.disabled = true;
+      nextButtonRef.current.classList.add("btn_inactive");
+      nextButtonRef.current.classList.remove("btn_active");
+      prevButtonRef.current.disabled = true;
+      prevButtonRef.current.classList.add("btn_inactive");
+      prevButtonRef.current.classList.remove("btn_active");
       return;
     }
-    setSearchText(keyword);
     const regex = new RegExp(`(?![^<>]*>)(${keyword})`, "gi");
     const highlighted = Text.replace(regex, (match, index) => {
       return `<span class="high_light">${match}</span>`;
     });
     htmlRef.current.innerHTML = highlighted;
-    setHighlightedText(highlighted);
 
     if (regex.source !== "(?:)") {
       const matches = htmlRef.current.querySelectorAll(".high_light");
       const count = matches.length;
       setMatchCount(count);
-
       if (count > 0) {
         if (count <= 1) {
           nextButtonRef.current.classList.add("btn_inactive");
           nextButtonRef.current.classList.remove("btn_active");
+
           prevButtonRef.current.classList.add("btn_inactive");
           prevButtonRef.current.classList.remove("btn_active");
         } else if (count > 1) {
           nextButtonRef.current.classList.add("btn_active");
           nextButtonRef.current.classList.remove("btn_inactive");
+
           prevButtonRef.current.classList.add("btn_active");
           prevButtonRef.current.classList.remove("btn_inactive");
         }
@@ -71,6 +75,7 @@ const KeyWordFinder = () => {
         nextButtonRef.current.disabled = true;
         nextButtonRef.current.classList.add("btn_inactive");
         nextButtonRef.current.classList.remove("btn_active");
+
         prevButtonRef.current.disabled = true;
         prevButtonRef.current.classList.add("btn_inactive");
         prevButtonRef.current.classList.remove("btn_active");
@@ -82,10 +87,11 @@ const KeyWordFinder = () => {
       nextButtonRef.current.disabled = true;
       nextButtonRef.current.classList.add("btn_active");
       nextButtonRef.current.classList.remove("btn_inactive");
+
       prevButtonRef.current.disabled = true;
       prevButtonRef.current.classList.add("btn_active");
       prevButtonRef.current.classList.remove("btn_inactive");
-      setMatchIndex(0);
+      setMatchIndex(-1);
     }
   };
 
@@ -216,14 +222,14 @@ const KeyWordFinder = () => {
           patterns that Hooks rely on:
           <ol>
             <li>
-              "Only Call Hooks at the Top Level" — Don't call hooks from
-              inside loops, conditions, or nested statements so that the hooks
-              are called in the same order each render. "Only Call Hooks from
-              React Functions" —
+              "Only Call Hooks at the Top Level" — Don't call hooks from inside
+              loops, conditions, or nested statements so that the hooks are
+              called in the same order each render. "Only Call Hooks from React
+              Functions" —
             </li>
             <li>
-              Don't call hooks from plain JavaScript functions so that
-              stateful logic stays with the component.
+              Don't call hooks from plain JavaScript functions so that stateful
+              logic stays with the component.
             </li>
           </ol>
           Although these rules can't be enforced at runtime, code analysis tools

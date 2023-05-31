@@ -30,10 +30,10 @@ const Modal = ({
           </p>
         </div>
         <div className="btn">
-          <span className="" ref={prevRef} onClick={prevBtnClick}>
+          <span className="btn_inactive" ref={prevRef} onClick={prevBtnClick}>
             <BsChevronUp />
           </span>
-          <span className="" ref={nxtBtnRef} onClick={nxtBtnClick}>
+          <span className="btn_inactive" ref={nxtBtnRef} onClick={nxtBtnClick}>
             <BsChevronDown />
           </span>
           <span className="close_btn" onClick={handleCloseBtn}>
