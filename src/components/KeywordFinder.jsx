@@ -31,18 +31,17 @@ const KeyWordFinder = () => {
 
   const handleInput = (e) => {
     setMatchIndex(-1);
-    var keyword = e.target.value;
-    keyword = keyword.replace(/[.<]/g, "");
-    if (keyword == "" || keyword == null) {
+    var keyword = e.target.value.replace(/[.<]/g, "");
+    // keyword = keyword.replace(/[.<]/g, "");
+    const textEmpty = keyword === "" || keyword == null;
+    if (textEmpty) {
       htmlRef.current.innerHTML = Text;
       setMatchCount(0);
-      setMatchIndex(-1);
+      //setMatchIndex(-1);
       nextButtonRef.current.disabled = true;
-      nextButtonRef.current.classList.add("btn_inactive");
-      nextButtonRef.current.classList.remove("btn_active");
+      nextButtonRef.current.classList.replace("btn_active", "btn_inactive");
       prevButtonRef.current.disabled = true;
-      prevButtonRef.current.classList.add("btn_inactive");
-      prevButtonRef.current.classList.remove("btn_active");
+      prevButtonRef.current.classList.replace("btn_active", "btn_inactive");
       return;
     }
     const regex = new RegExp(`(?![^<>]*>)(${keyword})`, "gi");
@@ -57,40 +56,29 @@ const KeyWordFinder = () => {
       setMatchCount(count);
       if (count > 0) {
         if (count <= 1) {
-          nextButtonRef.current.classList.add("btn_inactive");
-          nextButtonRef.current.classList.remove("btn_active");
-
-          prevButtonRef.current.classList.add("btn_inactive");
-          prevButtonRef.current.classList.remove("btn_active");
+          // nextButtonRef.current.classList.replace("btn_active", "btn_inactive");
+          prevButtonRef.current.classList.replace("btn_active", "btn_inactive");
         } else if (count > 1) {
-          nextButtonRef.current.classList.add("btn_active");
-          nextButtonRef.current.classList.remove("btn_inactive");
-
-          prevButtonRef.current.classList.add("btn_active");
-          prevButtonRef.current.classList.remove("btn_inactive");
+          nextButtonRef.current.classList.replace("btn_inactive", "btn_active");
+          prevButtonRef.current.classList.replace("btn_inactive", "btn_active");
         }
         nextButtonRef.current.disabled = count <= 1;
         prevButtonRef.current.disabled = count <= 1;
       } else {
         nextButtonRef.current.disabled = true;
-        nextButtonRef.current.classList.add("btn_inactive");
-        nextButtonRef.current.classList.remove("btn_active");
+        nextButtonRef.current.classList.replace("btn_active", "btn_inactive");
 
         prevButtonRef.current.disabled = true;
-        prevButtonRef.current.classList.add("btn_inactive");
-        prevButtonRef.current.classList.remove("btn_active");
+        prevButtonRef.current.classList.replace("btn_active", "btn_inactive");
         setMatchIndex(0);
       }
     } else {
       htmlRef.current.innerHTML = Text;
       setMatchCount(0);
       nextButtonRef.current.disabled = true;
-      nextButtonRef.current.classList.add("btn_active");
-      nextButtonRef.current.classList.remove("btn_inactive");
-
+      nextButtonRef.current.classList.replace("btn_inactive", "btn_active");
       prevButtonRef.current.disabled = true;
-      prevButtonRef.current.classList.add("btn_active");
-      prevButtonRef.current.classList.remove("btn_inactive");
+      prevButtonRef.current.classList.replace("btn_inactive", "btn_active");
       setMatchIndex(-1);
     }
   };
@@ -98,7 +86,7 @@ const KeyWordFinder = () => {
   const handleNextClick = () => {
     const matches = htmlRef.current.querySelectorAll(".high_light");
     const count = matches.length;
-    if (count === 0 || count === 1) {
+    if (count === 0) {
       return;
     }
     const nextIndex = matchIndex >= count - 1 ? 0 : matchIndex + 1;
